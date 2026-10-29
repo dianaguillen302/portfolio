@@ -118,7 +118,7 @@ p { margin: 0; color: var(--text); }
 .card .tag { font-size: 14px; color: var(--muted); }
 .card p { font-size: 15px; }
 .card .link { font-size: 15px; font-weight: 600; color: var(--blue); }
-.card:hover h3 { color: var(--blue); }
+a.card:hover h3 { color: var(--blue); }
 .chips { display: flex; gap: 6px; flex-wrap: wrap; }
 .chip { font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 99px; background: var(--tint-2); color: var(--muted); }
 @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
