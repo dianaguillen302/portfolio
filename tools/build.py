@@ -279,7 +279,6 @@ def contact(h2, cv_buttons, pre):
         <div><span>Setup</span><b>Hybrid or remote</b></div>
         <div><span>Authorization</span><b>U.S. permanent resident</b></div>
         <div><span>Sponsorship</span><b>Not required</b></div>
-        <div><span>Phone</span><b>+1 (775) 291 8542</b></div>
       </div>
     </section>"""
 
