@@ -177,5 +177,8 @@ strong { color: var(--ink); }
 .slides img, .slides video { width: 100%; border-radius: 12px; box-shadow: 0 0 0 1px var(--frame); background: var(--surface); }
 .slides figure { margin: 0; }
 .slides figcaption { font-size: 14px; color: var(--muted); margin-top: 10px; }
+.slides .onair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 2vw, 20px); }
+.slides .onair figcaption { grid-column: 1 / -1; margin-top: 0; }
+@media (max-width: 760px) { .slides .onair { grid-template-columns: minmax(0, 1fr); } }
 
 .project-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); }

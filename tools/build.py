@@ -129,6 +129,9 @@ PROJECTS = {
                ("Role", "Senior designer, as part of Malka Media’s design team"), ("Scope", "Weekly thumbnails, podcast art, name plates")],
         live=None,
         behance="https://www.behance.net/gallery/255116809/The-Stephen-A-Smith-Show-Weekly-Series-Design",
+        onair=[("onair-interview.jpg", "The Stephen A. Smith Show on air: Stephen A. Smith and Jesse Palmer side by side, with the show logo and name bars"),
+               ("onair-open.jpg", "The Stephen A. Smith Show open on air")],
+        onair_caption="On air: the interview layout and show open, designed as part of Malka Media’s design team.",
         slides=["The Stephen A. Smith Show thumbnails",
                 "The system: one master file",
                 "Special episodes",
@@ -384,6 +387,9 @@ def build_project(slug):
     figs = []
     for i, alt in enumerate(p["slides"], 1):
         figs.append(f'      <img src="{pre}assets/img/projects/{slug}/{i:02d}.jpg" alt="{alt}" loading="{"eager" if i == 1 else "lazy"}">')
+        if i == 1 and "onair" in p:
+            imgs = "".join(f'<img src="{pre}assets/img/projects/{slug}/{f}" alt="{alt}" loading="lazy">' for f, alt in p["onair"])
+            figs.append(f'      <figure class="onair">{imgs}<figcaption>{p["onair_caption"]}</figcaption></figure>')
         if i == 1 and "video" in p:
             mp4, still, label = p["video"]
             figs.append(f'      <figure><video autoplay muted loop playsinline preload="metadata" poster="{pre}assets/img/{still}" aria-label="{label}">'
