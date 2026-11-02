@@ -209,14 +209,15 @@ def hero(eyebrow, h1, lede, cv, pre):
     return f"""  <section class="hero">
     <div class="wrap">
       <div class="stack" style="gap: 22px;">
+        <span class="status"><i aria-hidden="true"></i>Available for full-time roles · Austin, TX · Hybrid or remote</span>
         <span class="eyebrow">{eyebrow}</span>
         <h1>{h1}</h1>
         <p class="lede">{lede}</p>
-        <p class="note">Available for full-time roles · Hybrid or remote · No sponsorship needed</p>
         <div class="btn-row" style="padding-top: 6px;">
           <a class="btn primary" href="#work">See the work</a>
           <a class="btn" href="{pre}{cv}" download>Download CV</a>
         </div>
+        <p class="note">U.S. permanent resident · No sponsorship needed</p>
       </div>
       <figure class="portrait">
         <img src="{pre}assets/img/diana.jpg" alt="Diana Lafazan working on a laptop by a window">
@@ -236,7 +237,7 @@ def how(steps):
 
 
 ABOUT_PARAS = [
-    "Packaging and 3D renders early on, then brand systems and national campaigns at agencies in Asunción. After that came two years as senior designer at ueno Bank, then broadcast design in California at Malka Media. Now I design and ship websites end to end, and I still do the brand work.",
+    "Packaging and 3D renders early on, then brand systems and national campaigns at agencies in Asunción. After that came two years as senior designer at ueno Bank, then broadcast design in California at Malka Media. Now I design and ship digital products end to end, from multi-audience sites with booking, accounts and branch systems to the brands around them.",
     "That path wasn’t a detour. Industrial design taught me to work inside real constraints. A master’s in art direction taught me to hold a whole system in view at once. Campaign work taught me to make something land in three seconds.",
     "I work in English and Spanish, and most of my career has meant translating between markets as much as between languages.",
 ]
@@ -294,6 +295,19 @@ def work_section(title, note, slugs, pre, extra=""):
     </section>"""
 
 
+# ── Numbers rows: trust and results first, scope second ──
+NUMS_HOME = [("4 companies", "In one client group, which has kept me on since March 2024"),
+             ("13 years", "Designing across brand, campaign, banking, broadcast and web"),
+             ("3 countries", "Paraguay, Colombia and the United States, in English and Spanish")]
+NUMS_DIGITAL = [("4 companies", "In one client group, which has kept me on since March 2024"),
+                ("21 pages", "From one branch template, across four cities"),
+                ("9 brands", "Behind one navigation, organized by what visitors came to do")]
+NUMS_BRAND = [("44 SKUs", "From 22 label designs, one system, all in production"),
+              ("18 sizes", "Of animated billboard at 15 locations for ueno’s launch"),
+              ("7 accounts", "At once, as part of Malka Media’s design team"),
+              ("13 years", "Brand, campaign and broadcast design in Paraguay, Colombia and the United States")]
+
+
 # ── Pages ───────────────────────────────────────────────────────────────────
 ROWS_ALL = [("Brand identity", "Systems, type, color, guidelines"), ("Packaging &amp; print", "Labels, SKU systems, production files"),
             ("Campaign &amp; broadcast", "Social, out-of-home, live graphics"), ("Web design", "Research, IA, flows, UI in Figma"),
@@ -318,13 +332,12 @@ def build_home():
     body = "\n".join([
         header("./"),
         "<main>",
-        hero("Product designer · Austin, TX · English &amp; Español",
+        hero("Product designer · English &amp; Español",
              "I design products around what people came to do, and ship them myself.",
              "I start with who’s actually arriving and what they came to do, shape the structure and the interface around that, then build it and put it live myself. Behind that, 13 years of brand, campaign and broadcast design, so the craft holds up as well as the thinking.",
              CV_UX, ""),
         '  <div class="wrap">',
-        numbers([("4 products", "Live sites for one client group, since March 2024"), ("21 branches", "One page template across four cities"),
-                 ("9 brands", "One navigation, organized by intent"), ("13 years", "Brand, campaign, banking, broadcast and web")]),
+        numbers(NUMS_HOME),
         work_section("Selected work", "Product and web first, then brand", HOME, ""),
         how(HOW_DIGITAL),
         about(ROWS_DIGITAL),
@@ -341,28 +354,26 @@ def build_home():
 def build_role(kind):
     pre = "../"
     if kind == "brand":
-        h = hero("Brand &amp; graphic designer · Austin, TX · English &amp; Español",
+        h = hero("Brand &amp; graphic designer · English &amp; Español",
                  "Brands that hold together on the shelf, on screen and on the street.",
                  "Thirteen years of identity, packaging, campaign and broadcast design in the U.S. and Latin America. I do my best work inside a brand, at volume: a pay-per-view campaign in every format, a bank’s launch across 18 billboard sizes, a 44-SKU coffee line.",
                  CV_BRAND, pre)
-        nums = numbers([("13 years", "Brand, campaign and broadcast design"), ("44 SKUs", "From 22 label designs, one system"),
-                        ("18 sizes", "Of animated billboard for ueno’s launch"), ("7 accounts", "At once, as part of Malka Media’s design team")])
         work = work_section("Brand work", "Campaign, broadcast, launch and packaging", BRAND, pre)
         rest = [how(HOW_BRAND), about(ROWS_BRAND),
                 contact("Looking for a designer who keeps the brand right at volume?", [("Download CV", CV_BRAND)], pre)]
+        nums = numbers(NUMS_BRAND)
         title, desc = "Diana Lafazan — Brand &amp; Graphic Designer", "Brand, packaging, campaign and broadcast design by Diana Lafazan: Showtime, ueno Bank, America Coffee, The Stephen A. Smith Show."
     else:
-        h = hero("UX/UI &amp; web designer · Austin, TX · English &amp; Español",
+        h = hero("UX/UI &amp; web designer · English &amp; Español",
                  "I design websites around what people came to do, and ship them myself.",
                  "From the first question (who arrives, and why) to a site people actually use, without handing it off. Four live sites for one client group since 2024, on top of 13 years of brand and campaign design.",
                  CV_UX, pre)
-        nums = numbers([("4 sites", "One client group, since March 2024"), ("21 branches", "One page template, four cities"),
-                        ("9 brands", "One navigation, built by intent"), ("24 hours", "To rebuild Empedril and launch on schedule")])
         also = ('\n      <p class="also">Also for the same group: <a href="https://carmotor.com.py" target="_blank" rel="noopener">Carmotor ↗</a>, '
                 "heavy machinery and trucks, with quote and service-booking routes; and the BOGA holding group’s site, with art-directed generated imagery.</p>")
         work = work_section("Digital work", "Researched, designed and built by me", DIGITAL, pre, also)
         rest = [how(HOW_DIGITAL), about(ROWS_DIGITAL),
                 contact("Need a site designed and live, not just designed?", [("Download CV", CV_UX)], pre)]
+        nums = numbers(NUMS_DIGITAL)
         title, desc = "Diana Lafazan — UX/UI &amp; Web Designer", "Websites researched, designed and built in Framer by Diana Lafazan: Automotor and Empedril."
     body = "\n".join([header("./"), "<main>", h, '  <div class="wrap">', nums, work, *rest, "  </div>", "</main>"])
     return page(title, desc, body, pre)

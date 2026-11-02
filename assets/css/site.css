@@ -23,6 +23,10 @@
   --band: #15161C;          /* the dark contact band */
   --band-text: #C9CCDE;
   --band-line: #33364A;
+  --status-bg: #EAF6EE;
+  --status-ink: #1F5135;
+  --status-dot: #2E9E5B;
+  --status-ring: rgba(46, 158, 91, 0.18);
   --gutter: clamp(16px, 5.5vw, 80px);
   --max: 1200px;
 }
@@ -43,6 +47,10 @@
     --band: #181A24;
     --band-text: #B9BDD0;
     --band-line: #2C2F40;
+    --status-bg: rgba(46, 158, 91, 0.14);
+    --status-ink: #9BE0B8;
+    --status-dot: #4CC383;
+    --status-ring: rgba(76, 195, 131, 0.2);
   }
 }
 
@@ -84,6 +92,10 @@ strong { color: var(--ink); }
 .hero h1 { font-size: clamp(38px, 5vw, 62px); line-height: 1.03; font-weight: 700; letter-spacing: -1.6px; }
 .hero .lede { font-size: 19px; }
 .hero .note { color: var(--muted); font-size: 16px; }
+/* Availability pill: reads as a live status, not a request */
+.status { align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border-radius: 99px;
+  background: var(--status-bg); color: var(--status-ink); font-size: 14px; font-weight: 600; line-height: 1.3; }
+.status i { width: 8px; height: 8px; border-radius: 50%; background: var(--status-dot); flex: none; box-shadow: 0 0 0 4px var(--status-ring); }
 .portrait { margin: 0; }
 .portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 56% 28%; border-radius: 16px; }
 .portrait figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); }
@@ -94,10 +106,9 @@ strong { color: var(--ink); }
 }
 
 /* ── Numbers ── */
-.numbers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; padding: 28px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.numbers { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 28px; padding: 28px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .numbers b { display: block; font: 600 32px/1 'Outfit', sans-serif; color: var(--accent); margin-bottom: 8px; }
 .numbers span { font-size: 15px; color: var(--muted); line-height: 1.45; display: block; }
-@media (max-width: 860px) { .numbers { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* ── Sections ── */
 .section { padding-top: clamp(56px, 7vw, 96px); }
