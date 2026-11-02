@@ -142,6 +142,7 @@ PROJECTS = {
 }
 
 ALL = ["automotor", "showtime", "america-coffee", "empedril", "ueno", "stephen-a-smith"]
+HOME = ["automotor", "empedril", "showtime", "america-coffee", "ueno", "stephen-a-smith"]
 BRAND = ["showtime", "ueno", "america-coffee", "stephen-a-smith"]
 DIGITAL = ["automotor", "empedril"]
 
@@ -211,7 +212,7 @@ def hero(eyebrow, h1, lede, cv, pre):
         <span class="eyebrow">{eyebrow}</span>
         <h1>{h1}</h1>
         <p class="lede">{lede}</p>
-        <p class="note">Open to full-time roles, hybrid or remote. U.S. permanent resident, no sponsorship needed.</p>
+        <p class="note">Available for full-time roles · Hybrid or remote · No sponsorship needed</p>
         <div class="btn-row" style="padding-top: 6px;">
           <a class="btn primary" href="#work">See the work</a>
           <a class="btn" href="{pre}{cv}" download>Download CV</a>
@@ -313,26 +314,27 @@ HOW_BRAND = [("01 · Read the brand first", "On Showtime I worked from what the 
 
 
 def build_home():
+    # Product design leads (Diana's main target); brand work follows as proof of craft.
     body = "\n".join([
         header("./"),
         "<main>",
-        hero("Brand &amp; digital designer · Austin, TX · English &amp; Español",
-             "I design brands and ship the websites that carry them.",
-             "Identity, packaging, campaigns and broadcast on one side. On the other, websites I design in Figma, then build and launch in Framer myself. Thirteen years, two markets, two languages.",
-             CV_BRAND, ""),
+        hero("Product designer · Austin, TX · English &amp; Español",
+             "I design products around what people came to do, and ship them myself.",
+             "I start with who’s actually arriving and what they came to do, shape the structure and the interface around that, then build it and put it live myself. Behind that, 13 years of brand, campaign and broadcast design, so the craft holds up as well as the thinking.",
+             CV_UX, ""),
         '  <div class="wrap">',
-        numbers([("13 years", "Brand, campaign, banking, broadcast and web"), ("4 companies", "One client group, two and a half years, since March 2024"),
-                 ("44 SKUs", "America Coffee label system, in production"), ("21 branches", "One page system across four cities")]),
-        work_section("Selected work", "Brand and digital, six projects", ALL, ""),
-        how(HOW_DIGITAL[:2] + [("03 · Own it to production", "A live site I built myself, a coffee line on the shelf, a launch on every screen in town. I’m accountable for how it works in the world, not just in the file.")]),
-        about(ROWS_ALL),
-        contact("Hiring someone who can design the brand and get the site live?",
-                [("CV · Brand &amp; graphic", CV_BRAND), ("CV · UX/UI &amp; web", CV_UX)], ""),
+        numbers([("4 products", "Live sites for one client group, since March 2024"), ("21 branches", "One page template across four cities"),
+                 ("9 brands", "One navigation, organized by intent"), ("13 years", "Brand, campaign, banking, broadcast and web")]),
+        work_section("Selected work", "Product and web first, then brand", HOME, ""),
+        how(HOW_DIGITAL),
+        about(ROWS_DIGITAL),
+        contact("Hiring a product designer who can also ship it?",
+                [("CV · Product &amp; UX/UI", CV_UX), ("CV · Brand &amp; graphic", CV_BRAND)], ""),
         "  </div>",
         "</main>",
     ])
-    return page("Diana Lafazan — Brand &amp; Digital Designer",
-                "Diana Lafazan designs brands and ships the websites that carry them. Brand, packaging and campaign work, plus websites built and launched in Framer. Austin, TX.",
+    return page("Diana Lafazan — Product Designer",
+                "Diana Lafazan is a product designer in Austin, TX who takes products from the first research question to a live site, backed by 13 years of brand and campaign design.",
                 body, "")
 
 
@@ -352,7 +354,7 @@ def build_role(kind):
     else:
         h = hero("UX/UI &amp; web designer · Austin, TX · English &amp; Español",
                  "I design websites around what people came to do, and ship them myself.",
-                 "Research, information architecture and UI in Figma, then built, launched and maintained in Framer, with no handoff. Four production sites for one client group since 2024, on top of 13 years of brand and campaign design.",
+                 "From the first question (who arrives, and why) to a site people actually use, without handing it off. Four live sites for one client group since 2024, on top of 13 years of brand and campaign design.",
                  CV_UX, pre)
         nums = numbers([("4 sites", "One client group, since March 2024"), ("21 branches", "One page template, four cities"),
                         ("9 brands", "One navigation, built by intent"), ("24 hours", "To rebuild Empedril and launch on schedule")])
